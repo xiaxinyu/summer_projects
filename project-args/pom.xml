@@ -7,9 +7,7 @@
     <artifactId>summer-projects</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>summer-projects</groupId>
   <artifactId>project-args</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>project-args</name>
   <url>http://maven.apache.org</url>
   <properties>
