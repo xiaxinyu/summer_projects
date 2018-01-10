@@ -8,5 +8,6 @@
   <modules>
   	<module>project-filejoiner</module>
     <module>project-args</module>
+    <module>project-account</module>
   </modules>
 </project>
