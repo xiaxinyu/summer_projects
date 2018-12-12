@@ -108,7 +108,7 @@ var datagrid = '#datagrid';
 var dataform = '#dataform';
 var editIndex = undefined;
 var save_url = app_url + '/medical/add';
-var query_url = app_url + '/salary/getSalarys';
+var query_url = app_url + '/house-rent/getHouseRents';
 var dialog = '#dlg';
 var form = 'form';
 $(function() {

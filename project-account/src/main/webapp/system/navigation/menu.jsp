@@ -44,6 +44,13 @@
        		onclick="selectTab(this)" title="Salary-Detail" url="account/salary/Salary.jsp" >Detail</a>  
        </div>
    </div>
+   <div title="HouseRent" data-options="iconCls:'icon-search'" style="overflow:auto;">
+   	   <div class="menuspace"></div>
+   	   <div style="width: 100%;text-align: center;">
+       		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'"  style="text-align: left;width: 90%"
+       		onclick="selectTab(this)" title="HouseRent-Detail" url="account/house-rent/HouseRent.jsp" >Detail</a>  
+       </div>
+   </div>
    <div title="Endowment insurance" data-options="iconCls:'icon-search'" style="overflow:auto;" >
 	   <div class="menuspace"></div>
 	   <div style="width: 100%;text-align: center;">
