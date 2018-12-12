@@ -14,7 +14,7 @@
 	<!-- c3p0 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="user" value="scott"></property>
-		<property name="password" value="summer"></property>
+		<property name="password" value="tiger"></property>
 		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:ORCL"></property>
 		<property name="initialPoolSize" value="5"></property>

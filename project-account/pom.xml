@@ -55,7 +55,7 @@
 		<jackson-mapper-asl.version>1.8.8</jackson-mapper-asl.version>
 		<jackson-module-jaxb-annotations.version>2.1.1</jackson-module-jaxb-annotations.version>
 
-		<servlet-api.version>2.5</servlet-api.version>
+		<servlet-api.version>4.0.1</servlet-api.version>
 		<junit.version>4.9</junit.version>
 	</properties>
 
@@ -249,9 +249,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>${servlet-api.version}</version>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>${servlet-api.version}</version>
 		</dependency>
 
 		<dependency>

@@ -37,27 +37,12 @@
        		onclick="selectTab(this)" title="Consume Map Report" url="account/credit/report/ConsumeMapReport.jsp" >Consume Map Report</a>
        </div>
    </div>
-   <div title="Deposit Card" data-options="iconCls:'icon-search'" style="overflow:auto;">
+   <div title="Salary" data-options="iconCls:'icon-search'" style="overflow:auto;">
    	   <div class="menuspace"></div>
    	   <div style="width: 100%;text-align: center;">
        		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'"  style="text-align: left;width: 90%"
-       		onclick="selectTab(this)" title="储蓄卡记录" url="account/deposit/SaveAccountBill.jsp" >储蓄卡记录</a>  
+       		onclick="selectTab(this)" title="Salary-Detail" url="account/salary/Salary.jsp" >Detail</a>  
        </div>
-        <div class="menuspace"></div>
-   	   <div style="width: 100%;text-align: center;">
-       		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'"  style="text-align: left;width: 90%"
-       		onclick="selectTab(this)" title="储蓄卡账单导入" url="account/deposit/SavingsCardBillUpload.jsp" >储蓄卡账单导入</a>  
-       </div>
-       <div class="menuspace"></div>
-   	   <div style="width: 100%;text-align: center;">
-       		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'"  style="text-align: left;width: 90%"
-       		onclick="selectTab(this)" title="日消费曲线分布图" url="account/deposit/report/SaveAccountBill_Day_Line3DReport.jsp" >日消费曲线分布图</a>  
-       </div>
-       <div class="menuspace"></div>
-   	   <div style="width: 100%;text-align: center;">
-       		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'"  style="text-align: left;width: 90%"
-       		onclick="selectTab(this)" title="月消费曲线分布图" url="account/deposit/report/SaveAccountBill_Month_Line3DReport.jsp" >月消费曲线分布图</a>  
-       </div>	       
    </div>
    <div title="Endowment insurance" data-options="iconCls:'icon-search'" style="overflow:auto;" >
 	   <div class="menuspace"></div>

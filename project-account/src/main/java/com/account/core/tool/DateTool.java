@@ -15,6 +15,7 @@ public class DateTool {
 	public final static String DF_YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
 	public final static String DF_YYYYMMDD = "yyyyMMdd";
 	public final static String DF_YYYY_MM_DD = "yyyy-MM-dd";
+	public final static String DF_YYYY = "yyyy";
 	
 	public static Date addMonths(Date date, int months) {
 		if (date != null) {
