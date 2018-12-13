@@ -50,8 +50,8 @@
 					
 					<th data-options="field:'transactionDate',width:80,align:'center',formatter:app.date.format">Transaction date</th>
 					<th data-options="field:'balanceMoney',width:100,formatter:app.money.rmb">Balance money</th>
-					<th data-options="field:'transactionDesc',width:350,align:'left'">Transaction desc</th>
 					<th data-options="field:'balanceCurrency',width:80,align:'center'">Currency</th>
+					<th data-options="field:'transactionDesc',width:350,align:'left'">Transaction desc</th>
 					
 					<th data-options="field:'demoArea',width:420,align:'left',editor:{type:'textbox'}">Description</th>
 				</tr>
