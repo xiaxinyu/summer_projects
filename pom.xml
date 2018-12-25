@@ -9,5 +9,6 @@
   	<module>project-filejoiner</module>
     <module>project-args</module>
     <module>project-account</module>
+    <module>project-web-server</module>
   </modules>
 </project>
