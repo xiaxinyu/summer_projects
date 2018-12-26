@@ -4,9 +4,13 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.util.Map;
+import java.util.concurrent.Executors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.web.server.core.pool.ConnectionFactory;
+import com.web.server.core.pool.ConnectionPool;
 
 /**
  * A simple http server using bio to read a socket stream<br>
@@ -28,6 +32,7 @@ public class WebServer {
 	private final static Logger logger = LoggerFactory.getLogger(WebServer.class);
 	public static final int PORT = 8080;
 	public static final int BACK_LOG = 50;
+	public static ConnectionPool pool = ConnectionFactory.getConnectionPool();
 
 	public void start(Map<String, Servlet> configuration) {
 		ServerSocket server = null;
@@ -36,7 +41,7 @@ public class WebServer {
 			server.bind(new InetSocketAddress(PORT), BACK_LOG);
 			logger.info("Start server, listen port {}", PORT);
 			while (true) {
-				new ConnectionProcessor(server.accept(), configuration).start();
+				pool.execute(new ConnectionProcessor(server.accept(), configuration));
 			}
 		} catch (IOException e) {
 			logger.error("Startring server has error", e);

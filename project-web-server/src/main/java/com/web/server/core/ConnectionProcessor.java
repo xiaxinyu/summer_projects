@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import com.web.server.core.enumeration.HttpStatus;
 
-public class ConnectionProcessor extends Thread {
+public class ConnectionProcessor implements Runnable {
 	private final static Logger logger = LoggerFactory.getLogger(ConnectionProcessor.class);
 
 	private Socket client;
