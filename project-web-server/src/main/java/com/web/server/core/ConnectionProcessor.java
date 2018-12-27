@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,12 +41,14 @@ public class ConnectionProcessor implements Runnable {
 			logger.info(request.toString());
 
 			Response response = new Response(os);
-			Servlet servlet = servletMapping.get(request.getUrl());
-			if (null != servlet) {
-				servlet.service(request, response);
-			} else {
-				logger.warn("Can't found {}", request.getUrl());
-				response.setStatus(HttpStatus.S_404);
+			if (StringUtils.isNotBlank(request.getUrl())) {
+				Servlet servlet = servletMapping.get(request.getUrl());
+				if (null != servlet) {
+					servlet.service(request, response);
+				} else {
+					logger.warn("Can't found {}", request.getUrl());
+					response.setStatus(HttpStatus.S_404);
+				}
 			}
 
 			response.flush();
