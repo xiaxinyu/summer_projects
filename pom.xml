@@ -10,5 +10,6 @@
     <module>project-args</module>
     <module>project-account</module>
     <module>project-web-server</module>
+    <module>project-net-message-parser</module>
   </modules>
 </project>
