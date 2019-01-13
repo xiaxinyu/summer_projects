@@ -32,14 +32,26 @@ public class MessageParser {
 			logger.warn("Cleaning message has error, message={}", e.getMessage());
 			return;
 		}
-		EthernetBean ethernetBean = EthernetParser.parse(messageStr);
-		logger.info(ethernetBean.toString());
+		EthernetBean ethernetBean = null;
+		if(hasEthernetMessage(messageStr)) {
+			ethernetBean = EthernetParser.parse(messageStr);
+			logger.info(ethernetBean.toString());
+		}else {
+			ethernetBean = new EthernetBean();
+			ethernetBean.setIPMessage(cleanLocalHeader(messageStr));
+		}
 		
 		IPBean ipBean = IPParser.parse(ethernetBean.getIPMessage());
-		logger.info(ipBean.toString());
-		
+		logger.info(ipBean.getTcpMessage());
 		TCPBean tcpBean = TCPParser.parse(ipBean.getTcpMessage());
 		logger.info(tcpBean.toString());
+	}
+	
+	public boolean hasEthernetMessage(String message) {
+		if (0 == message.indexOf("02000000")) {
+			return false;
+		}
+		return true;
 	}
 
 	public String readMessageFile(String path) {
@@ -85,6 +97,10 @@ public class MessageParser {
 		logger.info("Clean message: {}", message);
 		logger.info("End to clean message");
 		return message;
+	}
+	
+	public String cleanLocalHeader(String message) {
+		return message.substring(8);
 	}
 
 	public static boolean validateMessage(String message) {
