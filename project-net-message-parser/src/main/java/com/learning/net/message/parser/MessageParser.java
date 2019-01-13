@@ -8,8 +8,10 @@ import org.slf4j.LoggerFactory;
 
 import com.learning.net.message.parser.bean.EthernetBean;
 import com.learning.net.message.parser.bean.IPBean;
+import com.learning.net.message.parser.bean.TCPBean;
 import com.learning.net.message.parser.core.EthernetParser;
 import com.learning.net.message.parser.core.IPParser;
+import com.learning.net.message.parser.core.TCPParser;
 import com.learning.net.message.parser.exception.MessageFormatException;
 import com.project.utils.FileHelper;
 
@@ -35,6 +37,9 @@ public class MessageParser {
 		
 		IPBean ipBean = IPParser.parse(ethernetBean.getIPMessage());
 		logger.info(ipBean.toString());
+		
+		TCPBean tcpBean = TCPParser.parse(ipBean.getTcpMessage());
+		logger.info(tcpBean.toString());
 	}
 
 	public String readMessageFile(String path) {
