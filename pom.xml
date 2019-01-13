@@ -47,5 +47,6 @@
 		<module>project-persist</module>
 		<module>project-web-mvc</module>
 		<module>project-datasource</module>
+		<module>project-rpc</module>
 	</modules>
 </project>
