@@ -44,5 +44,8 @@
 		<module>project-web-server</module>
 		<module>project-net-message-parser</module>
 		<module>project-utils</module>
+		<module>project-persist</module>
+		<module>project-web-mvc</module>
+		<module>project-datasource</module>
 	</modules>
 </project>
