@@ -48,5 +48,6 @@
 		<module>project-web-mvc</module>
 		<module>project-datasource</module>
 		<module>project-rpc</module>
+		<module>project-heart-beat</module>
 	</modules>
 </project>
