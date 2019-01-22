@@ -4,8 +4,8 @@ import java.util.concurrent.TimeUnit;
 
 import com.heart.beat.core.HeartBeatRespHandler;
 import com.heart.beat.core.NettyMessage;
-import com.heart.beat.core.RpcDecoder;
-import com.heart.beat.core.RpcEncoder;
+import com.heart.beat.core.RPCDecoder;
+import com.heart.beat.core.RPCEncoder;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -38,7 +38,7 @@ public class NettyServer {
 	public static class ChildChannelHandler extends ChannelInitializer<SocketChannel> {
 		@Override
 		protected void initChannel(final SocketChannel ch) throws Exception {
-			ch.pipeline().addLast(new RpcDecoder(NettyMessage.class)).addLast(new RpcEncoder(NettyMessage.class))
+			ch.pipeline().addLast(new RPCDecoder(NettyMessage.class)).addLast(new RPCEncoder(NettyMessage.class))
 					.addLast(new IdleStateHandler(120, 0, 0, TimeUnit.SECONDS)).addLast(new HeartBeatRespHandler());
 		}
 	}

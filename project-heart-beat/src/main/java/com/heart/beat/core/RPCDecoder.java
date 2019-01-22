@@ -8,10 +8,10 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 
-public class RpcDecoder extends ByteToMessageDecoder {
+public class RPCDecoder extends ByteToMessageDecoder {
 	private Class<?> genericClass;
 
-	public RpcDecoder(Class<?> genericClass) {
+	public RPCDecoder(Class<?> genericClass) {
 		this.genericClass = genericClass;
 	}
 

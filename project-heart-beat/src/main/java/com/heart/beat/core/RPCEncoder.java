@@ -7,11 +7,11 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
 @SuppressWarnings("rawtypes")
-public class RpcEncoder extends MessageToByteEncoder {  
+public class RPCEncoder extends MessageToByteEncoder {  
   
     private Class<?> genericClass;  
   
-    public RpcEncoder(Class<?> genericClass) {  
+    public RPCEncoder(Class<?> genericClass) {  
         this.genericClass = genericClass;  
     }  
   
