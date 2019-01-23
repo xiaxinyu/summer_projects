@@ -2,7 +2,6 @@ package com.heart.beat.client;
 
 import java.util.concurrent.TimeUnit;
 
-import com.heart.beat.core.HeartBeatReqHandler;
 import com.heart.beat.core.NettyMessage;
 import com.heart.beat.core.RPCDecoder;
 import com.heart.beat.core.RPCEncoder;
@@ -32,7 +31,7 @@ public class NettyClient {
 			try {
 				TimeUnit.SECONDS.sleep(5);
 				try {
-					System.out.println("ÖØÐÂÁ´½Ó¡£¡£¡£");
+					System.out.println("Start to reconnect server.");
 					connect(remoteServer, port);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +46,7 @@ public class NettyClient {
 		@Override
 		protected void initChannel(final SocketChannel ch) throws Exception {
 			ch.pipeline().addLast(new RPCEncoder(NettyMessage.class)).addLast(new RPCDecoder(NettyMessage.class))
-					.addLast(new IdleStateHandler(120, 10, 0, TimeUnit.SECONDS)).addLast(new HeartBeatReqHandler());
+					.addLast(new IdleStateHandler(120, 10, 0, TimeUnit.SECONDS)).addLast(new HeartBeatClientHandler());
 		}
 	}
 

@@ -2,7 +2,6 @@ package com.heart.beat.server;
 
 import java.util.concurrent.TimeUnit;
 
-import com.heart.beat.core.HeartBeatRespHandler;
 import com.heart.beat.core.NettyMessage;
 import com.heart.beat.core.RPCDecoder;
 import com.heart.beat.core.RPCEncoder;
@@ -39,7 +38,7 @@ public class NettyServer {
 		@Override
 		protected void initChannel(final SocketChannel ch) throws Exception {
 			ch.pipeline().addLast(new RPCDecoder(NettyMessage.class)).addLast(new RPCEncoder(NettyMessage.class))
-					.addLast(new IdleStateHandler(120, 0, 0, TimeUnit.SECONDS)).addLast(new HeartBeatRespHandler());
+					.addLast(new IdleStateHandler(120, 0, 0, TimeUnit.SECONDS)).addLast(new HeartBeatServerHandler());
 		}
 	}
 

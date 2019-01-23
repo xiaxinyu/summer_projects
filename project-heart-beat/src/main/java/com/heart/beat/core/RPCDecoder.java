@@ -32,7 +32,6 @@ public class RPCDecoder extends ByteToMessageDecoder {
 		in.readBytes(data);
 
 		Object obj = SerializationUtil.deserializer(data, genericClass);
-		System.out.println("接收到的消息是：" + obj);
 		out.add(obj);
 	}
 }
