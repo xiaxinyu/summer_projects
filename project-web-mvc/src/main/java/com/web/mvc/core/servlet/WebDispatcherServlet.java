@@ -1,7 +1,11 @@
 package com.web.mvc.core.servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import javax.servlet.ServletConfig;
@@ -17,6 +21,7 @@ public class WebDispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(WebDispatcherServlet.class);
 	private Properties properties = new Properties();
+	private List<String> classNames = new ArrayList<>();
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
@@ -61,6 +66,16 @@ public class WebDispatcherServlet extends HttpServlet {
 	}
 
 	private void loadAllClazzes(String packageName) {
-
+		URL url = this.getClass().getClassLoader()
+				.getResource(File.separator + packageName.replaceAll("\\.", File.separator));
+		File dir = new File(url.getFile());
+		for (File file : dir.listFiles()) {
+			if (file.isDirectory()) {
+				loadAllClazzes(packageName + "." + file.getName());
+			} else {
+				String className = packageName + "." + file.getName().replaceFirst(".class", "");
+				classNames.add(className);
+			}
+		}
 	}
 }
