@@ -49,5 +49,6 @@
 		<module>project-datasource</module>
 		<module>project-rpc</module>
 		<module>project-heart-beat</module>
+		<module>project-http-helper</module>
 	</modules>
 </project>
