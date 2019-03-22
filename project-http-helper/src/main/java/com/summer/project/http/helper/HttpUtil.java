@@ -1,4 +1,4 @@
-package com.http.helper;
+package com.summer.project.http.helper;
 
 import org.apache.http.Header;
 import org.apache.http.HttpStatus;
