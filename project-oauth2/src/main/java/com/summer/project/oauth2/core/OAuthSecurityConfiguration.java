@@ -23,7 +23,7 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
-public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class OAuthSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private DataSource dataSource;
@@ -33,8 +33,11 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().passwordEncoder(encoder()).withUser("bill").password("abc123").roles("admin1")
-				.and().withUser("summer").password("$2a$10$sLQpSbtE72MC6vbM5kO1ku/8HowVJ4g1/4BH44ADmw5iSwGjslrNG").roles("USER");
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encode = passwordEncoder.encode("123456");
+
+		auth.inMemoryAuthentication().passwordEncoder(encoder()).withUser("admin").password(encode).roles("admin1")
+				.and().withUser("summer").password(encode).roles("USER");
 	}
 
 	@Override
