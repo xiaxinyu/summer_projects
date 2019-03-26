@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
@@ -19,6 +20,8 @@ import org.springframework.security.oauth2.provider.approval.TokenStoreUserAppro
 import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+
+import com.summer.project.oauth2.service.UserService;
 
 @Configuration
 @EnableWebSecurity
@@ -30,14 +33,22 @@ public class OAuthSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private ClientDetailsService clientDetailsService;
+	
+	@Autowired
+	private UserService userDetailsService;
 
 	@Autowired
 	public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		/* Memory Authentication */
+		/*BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String encode = passwordEncoder.encode("123456");
-
+		
 		auth.inMemoryAuthentication().passwordEncoder(encoder()).withUser("admin").password(encode).roles("admin1")
-				.and().withUser("summer").password(encode).roles("USER");
+		.and().withUser("summer").password(encode).roles("USER");*/
+
+		/* JDBC Authentication */
+		auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder());
+		auth.userDetailsService(userDetailsService);
 	}
 
 	@Override

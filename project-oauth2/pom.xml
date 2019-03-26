@@ -17,6 +17,7 @@
 		<spring-security-version>5.1.4.RELEASE</spring-security-version>
 		<common-lang-version>2.6</common-lang-version>
 		<commons-codec-version>1.10</commons-codec-version>
+		<mybatis.version>2.0.0</mybatis.version>
 	</properties>
 
 	<dependencies>
@@ -63,17 +64,17 @@
             <artifactId>spring-security-oauth2</artifactId>
             <version>${spring-boot-ouath2-version}</version>
         </dependency>
+        
+        <dependency>
+		    <groupId>org.mybatis.spring.boot</groupId>
+		    <artifactId>mybatis-spring-boot-starter</artifactId>
+		    <version>${mybatis.version}</version>
+		</dependency>
 		
 		<dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.47</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.0.19</version>
         </dependency>
 	</dependencies>
 
