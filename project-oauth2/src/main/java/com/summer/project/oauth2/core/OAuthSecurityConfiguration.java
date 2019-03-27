@@ -9,9 +9,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
@@ -39,14 +39,6 @@ public class OAuthSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
-		/* Memory Authentication */
-		/*BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String encode = passwordEncoder.encode("123456");
-		
-		auth.inMemoryAuthentication().passwordEncoder(encoder()).withUser("admin").password(encode).roles("admin1")
-		.and().withUser("summer").password(encode).roles("USER");*/
-
-		/* JDBC Authentication */
 		auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder());
 		auth.userDetailsService(userDetailsService);
 	}
@@ -55,13 +47,19 @@ public class OAuthSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.anonymous().disable().authorizeRequests().antMatchers("/oauth/token").permitAll();
 	}
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/swagger-ui.html/**", "/webjars/**", "/swagger-resources/**", "/v2/api-docs/**",
+				"/swagger-resources/configuration/ui/**", "/swagger-resources/configuration/security/**", "/images/**");
+	}
 
 	@Bean
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
 
-	@Bean // 声明TokenStore实现
+	@Bean
 	public TokenStore tokenStore() {
 		return new JdbcTokenStore(dataSource);
 	}

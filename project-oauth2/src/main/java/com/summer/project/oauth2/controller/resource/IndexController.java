@@ -1,4 +1,4 @@
-package com.summer.project.oauth2.controller;
+package com.summer.project.oauth2.controller.resource;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
