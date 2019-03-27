@@ -21,6 +21,7 @@ import org.springframework.security.oauth2.provider.request.DefaultOAuth2Request
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
+import com.summer.project.oauth2.core.contant.AuthConstant;
 import com.summer.project.oauth2.service.UserService;
 
 @Configuration
@@ -45,7 +46,15 @@ public class OAuthSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.anonymous().disable().authorizeRequests().antMatchers("/oauth/token").permitAll();
+		http.csrf().disable();
+
+		http.antMatcher("/oauth/**")
+		.authorizeRequests().antMatchers("/oauth/index").permitAll()
+				.antMatchers("/oauth/token").permitAll().antMatchers("/oauth/check_token").permitAll()
+				.antMatchers("/oauth/confirm_access").permitAll().antMatchers("/oauth/error").permitAll()
+				.antMatchers("/oauth/approvale/confirm").permitAll().antMatchers("/oauth/approvale/error").permitAll()
+				.anyRequest().authenticated().and().formLogin().loginPage("/oauth/index")
+				.loginProcessingUrl("/oauth/authorize");
 	}
 	
 	@Override
