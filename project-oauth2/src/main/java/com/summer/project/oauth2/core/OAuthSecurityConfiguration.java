@@ -48,13 +48,18 @@ public class OAuthSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 
-		http.antMatcher("/oauth/**")
-		.authorizeRequests().antMatchers("/oauth/index").permitAll()
-				.antMatchers("/oauth/token").permitAll().antMatchers("/oauth/check_token").permitAll()
-				.antMatchers("/oauth/confirm_access").permitAll().antMatchers("/oauth/error").permitAll()
-				.antMatchers("/oauth/approvale/confirm").permitAll().antMatchers("/oauth/approvale/error").permitAll()
-				.anyRequest().authenticated().and().formLogin().loginPage("/oauth/index")
-				.loginProcessingUrl("/oauth/authorize");
+		http.authorizeRequests()
+				.antMatchers("/oauth/index").permitAll()
+				.antMatchers("/oauth/token").permitAll()
+				.antMatchers("/oauth/authorize").permitAll()
+				.antMatchers("/oauth/check_token").permitAll()
+				.antMatchers("/oauth/confirm_access").permitAll()
+				.antMatchers("/oauth/error").permitAll()
+				.antMatchers("/oauth/approvale/confirm").permitAll()
+				.antMatchers("/oauth/approvale/error").permitAll()
+				.anyRequest().authenticated();
+				
+		http.formLogin().loginPage("/oauth/index").loginProcessingUrl("/oauth/authorize");
 	}
 	
 	@Override
