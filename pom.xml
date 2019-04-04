@@ -51,5 +51,6 @@
 		<module>project-heart-beat</module>
 		<module>project-http-helper</module>
 		<module>project-oauth2</module>
+		<module>project-email</module>
 	</modules>
 </project>
