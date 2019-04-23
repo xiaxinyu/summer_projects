@@ -69,4 +69,17 @@ public class JschUtil {
             throw new Exception("Can't find file, filePath = " + keyfile);
         }
     }
+
+    public static PublicKey readPemPublicKey(String keyfile) throws Exception {
+        File file = new File(keyfile);
+        if (file.exists()) {
+            FileReader fr = new FileReader(file);
+            PEMReader pemReader = new PEMReader(fr);
+            java.security.KeyPair kp = (java.security.KeyPair) pemReader.readObject();
+            PublicKey publicKey = kp.getPublic();
+            return publicKey;
+        } else {
+            throw new Exception("Can't find file, filePath = " + keyfile);
+        }
+    }
 }
