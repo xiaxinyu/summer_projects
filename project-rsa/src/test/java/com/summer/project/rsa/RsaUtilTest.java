@@ -11,8 +11,8 @@ public class RsaUtilTest {
     public void testRas(){
         try{
             Map<String, String> keys = RsaUtil.genKeyPair();
-            String publicKey = keys.get("public");
-            String privateKey = keys.get("private");
+            String publicKey = keys.get(RsaUtil.PUBLIC_KEY);
+            String privateKey = keys.get(RsaUtil.PRIVATE_KEY);
             System.out.println(publicKey);
             System.out.println();
             System.out.println(privateKey);
