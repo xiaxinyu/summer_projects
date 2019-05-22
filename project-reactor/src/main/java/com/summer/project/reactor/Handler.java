@@ -2,12 +2,21 @@ package com.summer.project.reactor;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
 
+import javax.sql.CommonDataSource;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.summer.project.reactor.common.CommomUtil;
 
 /**
  * Handler
@@ -40,7 +49,7 @@ public class Handler implements Runnable {
 
 	@Override
 	public void run() {
-		logger.info("Handler is working, sk.valid={}", sk.isValid());
+		logger.info("Handler is working, sk.valid={}, eventName={}", sk.isValid(), CommomUtil.getEventName(sk.interestOps()));
 		try {
 			if (sk.isAcceptable()) {
 				logger.info("Acception ready");
@@ -65,11 +74,11 @@ public class Handler implements Runnable {
 	}
 
 	private void process() {
-		logger.info("Process is working");
-		byte[] data = new byte[input.remaining()];
-		if (data != null && data.length > 0) {
-			input.get(data, 0, data.length);
-			logger.info("Receive data: {}", new String(data));
+		logger.info("Process is working, position:{} limit:{} capacity:{}", input.position(), input.limit(), input.capacity());
+		byte[] data = input.array();
+		if (data!=null && data.length > 0) {
+			String dataStr = new String(data);
+			logger.info("Receive data: [{}]", StringUtils.isNotBlank(dataStr) ? dataStr.trim() : "null");
 			input.clear();
 		} else {
 			logger.warn("No data is received");
@@ -89,7 +98,6 @@ public class Handler implements Runnable {
 		logger.info("Sending data");
 		output.put("Receive mesage from your side".getBytes());
 		socket.write(output);
-		output.clear();
 		if (outputIsComplete()) {
 			sk.cancel();
 		}
