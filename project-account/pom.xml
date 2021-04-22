@@ -31,7 +31,7 @@
 		<spring-jdbc.version>4.1.7.RELEASE</spring-jdbc.version>
 		<spring-test.version>4.1.7.RELEASE</spring-test.version>
 
-		<mybatis.version>3.2.6</mybatis.version>
+		<mybatis.version>3.5.6</mybatis.version>
 		<c3p0.version>0.9.2.1</c3p0.version>
 		<ojdbc6.version>11.2.0.3</ojdbc6.version>
 
