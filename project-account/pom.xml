@@ -25,7 +25,7 @@
 		<spring-context.version>4.1.7.RELEASE</spring-context.version>
 		<spring-beans.version>4.1.7.RELEASE</spring-beans.version>
 		<spring-aop.version>4.1.7.RELEASE</spring-aop.version>
-		<spring-expression.version>4.1.7.RELEASE</spring-expression.version>
+		<spring-expression.version>5.2.21.RELEASE</spring-expression.version>
 		<spring-tx.version>4.1.7.RELEASE</spring-tx.version>
 		<spring-context-support.version>4.1.7.RELEASE</spring-context-support.version>
 		<spring-jdbc.version>4.1.7.RELEASE</spring-jdbc.version>
