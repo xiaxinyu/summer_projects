@@ -51,7 +51,7 @@
 		<jackson-annotations.version>2.2.1</jackson-annotations.version>
 		<jackson-core.version>2.2.1</jackson-core.version>
 		<jackson-core-asl.version>1.8.8</jackson-core-asl.version>
-		<jackson-databind.version>2.2.1</jackson-databind.version>
+		<jackson-databind.version>2.12.6.1</jackson-databind.version>
 		<jackson-mapper-asl.version>1.8.8</jackson-mapper-asl.version>
 		<jackson-module-jaxb-annotations.version>2.1.1</jackson-module-jaxb-annotations.version>
 
