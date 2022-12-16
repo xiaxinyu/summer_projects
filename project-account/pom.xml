@@ -21,7 +21,7 @@
 
 		<spring-core.version>4.1.7.RELEASE</spring-core.version>
 		<spring-web.version>4.1.7.RELEASE</spring-web.version>
-		<spring-webmvc.version>4.1.7.RELEASE</spring-webmvc.version>
+		<spring-webmvc.version>5.2.20.RELEASE</spring-webmvc.version>
 		<spring-context.version>4.1.7.RELEASE</spring-context.version>
 		<spring-beans.version>4.1.7.RELEASE</spring-beans.version>
 		<spring-aop.version>4.1.7.RELEASE</spring-aop.version>
